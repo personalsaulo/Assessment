@@ -25,7 +25,8 @@ namespace AgendaDeAniversarios
                 Console.WriteLine("3 - Buscar Pessoas");
                 Console.WriteLine("4 - Carregar Agenda de arquivos");
                 Console.WriteLine("5 - Gravar agenda em arquivo");
-                Console.WriteLine("6 - Sair");
+                Console.WriteLine("6 - Abrir o arquivo em notepad");
+                Console.WriteLine("7 - Sair");
                 opcao = int.Parse(Console.ReadLine());
                 switch (opcao)
                 {
@@ -44,7 +45,12 @@ namespace AgendaDeAniversarios
                         break;
                     case 5:
                         agendaRepositorio.GravarAgendaEmArquivo(agenda, caminhoArquivo);
-                        
+                        break;
+                    case 6:
+                        Console.Clear();
+                        System.Diagnostics.Process.Start(caminhoArquivo);
+                        Console.WriteLine("Arquivo texto aberto");
+
                     default:
                         break;
                 }
@@ -53,7 +59,7 @@ namespace AgendaDeAniversarios
 
 
 
-            } while (opcao != 6);
+            } while (opcao != 7);
 
         }
 
