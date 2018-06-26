@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaDeAniversarios", "Age
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{55D8008A-F3FB-47C2-907E-AE07ABE7DF41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{5DB7AFDA-2DFD-44A1-AA54-F384AE53F5E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{55D8008A-F3FB-47C2-907E-AE07ABE7DF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D8008A-F3FB-47C2-907E-AE07ABE7DF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D8008A-F3FB-47C2-907E-AE07ABE7DF41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB7AFDA-2DFD-44A1-AA54-F384AE53F5E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB7AFDA-2DFD-44A1-AA54-F384AE53F5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB7AFDA-2DFD-44A1-AA54-F384AE53F5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB7AFDA-2DFD-44A1-AA54-F384AE53F5E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

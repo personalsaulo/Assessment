@@ -7,20 +7,20 @@ namespace AgendaDeAniversarios.Model
 {
     public class Amigo
     {
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public DateTime DataDeAniversario { get; set; }
+        //public string Nome { get; set; }
+        //public string Sobrenome { get; set; }
+        //public DateTime DataDeAniversario { get; set; }
 
 
-        public void CadastrarAniversarios(Amigo amigo)
-        {
-            using (StreamWriter writer = new StreamWriter(@"C:\Users\saulo\Desktop\Teste.txt"))
-            {
-                writer.Write(amigo.Nome);
-                writer.WriteLine(amigo.Sobrenome);
-                writer.WriteLine(amigo.DataDeAniversario);
-            }
-        }
+        //public void CadastrarAniversarios(Amigo amigo)
+        //{
+        //    using (StreamWriter writer = new StreamWriter(@"C:\Users\saulo\Desktop\Teste.txt"))
+        //    {
+        //        writer.Write(amigo.Nome);
+        //        writer.WriteLine(amigo.Sobrenome);
+        //        writer.WriteLine(amigo.DataDeAniversario);
+        //    }
+        //}
 
         public void VerificaSeTemAniversarioHoje()
         {
@@ -66,37 +66,37 @@ namespace AgendaDeAniversarios.Model
 
         }
 
-        public static void AtualizarInformacoes()
-        {
-            string texto = File.ReadAllText(@"C: \Users\saulo\Desktop\Teste.txt");
-            texto = texto.Replace("24", "25");
-            File.WriteAllText(@"C: \Users\saulo\Desktop\Teste.txt", texto);
-        }
+        //public static void AtualizarInformacoes()
+        //{
+        //    string texto = File.ReadAllText(@"C: \Users\saulo\Desktop\Teste.txt");
+        //    texto = texto.Replace("24", "25");
+        //    File.WriteAllText(@"C: \Users\saulo\Desktop\Teste.txt", texto);
+        //}
 
-        public static void BuscaPessoa(string nome)
-        {
-            int opcao;
-            var valores = File.ReadAllLines(@"C: \Users\saulo\Desktop\Teste.txt");
-            for (int i = 0; i < valores.Length; i++)
-            {
-                if (valores[i].Nome.Contains(nome))
-                {
-                    Console.WriteLine(i + " - Nome Completo: " + valores[i].Nome + " " + valores[i].Sobrenome);
-                }
+        //public static void BuscaPessoa(string nome)
+        //{
+        //    int opcao;
+        //    var valores = File.ReadAllLines(@"C: \Users\saulo\Desktop\Teste.txt");
+        //    for (int i = 0; i < valores.Length; i++)
+        //    {
+        //        if (valores[i].Nome.Contains(nome))
+        //        {
+        //            Console.WriteLine(i + " - Nome Completo: " + valores[i].Nome + " " + valores[i].Sobrenome);
+        //        }
 
-            }
-            opcao = int.Parse(Console.ReadLine());
+        //    }
+        //    opcao = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < valores.Length; i++)
-            {
-                if (i == opcao)
-                {
-                    int dias = CalculaQuantosDiasFaltamParaAniversario(valores[i].DataAniversario);
-                    Console.WriteLine(i + " - Nome Completo: " + valores[i].Nome + " " + valores[i].Sobrenome + "\n" + "Faltam: " + dias + " dias para esse aniversário.");
-                }
-            }
+        //    for (int i = 0; i < valores.Length; i++)
+        //    {
+        //        if (i == opcao)
+        //        {
+        //            int dias = CalculaQuantosDiasFaltamParaAniversario(valores[i].DataAniversario);
+        //            Console.WriteLine(i + " - Nome Completo: " + valores[i].Nome + " " + valores[i].Sobrenome + "\n" + "Faltam: " + dias + " dias para esse aniversário.");
+        //        }
+        //    }
 
-        }
+        //}
 
         private static int CalculaQuantosDiasFaltamParaAniversario(DateTime dataDeAniversario)
         {
