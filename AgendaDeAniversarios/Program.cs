@@ -50,7 +50,7 @@ namespace AgendaDeAniversarios
                         Console.Clear();
                         System.Diagnostics.Process.Start(caminhoArquivo);
                         Console.WriteLine("Arquivo texto aberto");
-
+                        break;
                     default:
                         break;
                 }
