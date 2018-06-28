@@ -17,16 +17,24 @@ namespace AgendaDeAniversarios
             int opcao = 0;
             Agenda agenda = new Agenda();
             AgendaRepositorio agendaRepositorio = new AgendaRepositorio();
-            const string caminhoArquivo = @"";
+            const string caminhoArquivo = @"C:\Users\saulo\source\repos\Assessment\Agenda.txt";
+            Pessoa pessoa = agenda.VerificaSeTemAniversarioHoje();
+
+            if (pessoa != null)
+                Console.WriteLine("Hoje é aniversário de :" + pessoa.Nome + ", " + pessoa.Sobrenome + ", " + pessoa.DataDeNascimento);
+
             do
             {
+                
                 Console.WriteLine("1 - Adicionar Pessoa");
-                Console.WriteLine("2 - Obter Pessoas");
-                Console.WriteLine("3 - Buscar Pessoas");
-                Console.WriteLine("4 - Carregar Agenda de arquivos");
-                Console.WriteLine("5 - Gravar agenda em arquivo");
-                Console.WriteLine("6 - Abrir o arquivo em notepad");
-                Console.WriteLine("7 - Sair");
+                Console.WriteLine("2 - Remover Pessoa"); 
+                Console.WriteLine("3 - Obter Pessoa");
+                Console.WriteLine("4 - Atualizar Pessoa");
+                Console.WriteLine("5 - Buscar Pessoas");
+                Console.WriteLine("6 - Carregar Agenda de arquivos");
+                Console.WriteLine("7 - Gravar agenda em arquivo");
+                Console.WriteLine("8 - Abrir o arquivo em notepad");
+                Console.WriteLine("9 - Sair");
                 opcao = int.Parse(Console.ReadLine());
                 switch (opcao)
                 {
@@ -34,19 +42,25 @@ namespace AgendaDeAniversarios
                         AdicionarPessoa(agenda);
                         break;
                     case 2:
-                        ObterPessoas(agenda);
+                        RemoverPessoas(agenda);
                         break;
                     case 3:
-                        BuscarPessoaPorNome(agenda);
+                        AtualizarPessoa(agenda);
                         break;
                     case 4:
+                        ObterPessoas(agenda);
+                        break;
+                    case 5:
+                        BuscarPessoaPorNome(agenda);
+                        break;
+                    case 6:
                         agenda = agendaRepositorio.ObterAgendaDeArquivo(caminhoArquivo);
                         Console.WriteLine("Agenda Carregada com sucesso");
                         break;
-                    case 5:
+                    case 7:
                         agendaRepositorio.GravarAgendaEmArquivo(agenda, caminhoArquivo);
                         break;
-                    case 6:
+                    case 8:
                         Console.Clear();
                         System.Diagnostics.Process.Start(caminhoArquivo);
                         Console.WriteLine("Arquivo texto aberto");
@@ -59,9 +73,11 @@ namespace AgendaDeAniversarios
 
 
 
-            } while (opcao != 7);
+            } while (opcao <=8);
 
         }
+
+
 
         static void AdicionarPessoa(Agenda agenda)
         {
@@ -81,6 +97,43 @@ namespace AgendaDeAniversarios
             agenda.Adicionar(pessoa);
         }
 
+        static void RemoverPessoas(Agenda agenda)
+        {
+            Console.WriteLine("Digite o nome da pessoa: ");
+            string nome = Console.ReadLine();
+            Pessoa pessoa = agenda.BuscaPorNome(nome);
+            if (pessoa == null)
+            {
+                Console.WriteLine("Pessoa não encontrada");
+            }
+            Console.WriteLine("Pessoa encontrada");
+            Console.WriteLine(pessoa.Nome);
+            Console.WriteLine(pessoa.Sobrenome);
+            Console.WriteLine(pessoa.DataDeNascimento);
+            Console.WriteLine("Preparando para remover");
+            agenda.Remover(pessoa.id);
+        }
+
+
+        static void AtualizarPessoa(Agenda agenda)
+        {
+            Pessoa pessoa = BuscarPessoaPorNome(agenda);
+
+            if(pessoa != null)
+            {
+                Console.WriteLine("Pessoa encontrada");
+                Console.WriteLine( "Nome Atual: " + pessoa.Nome +", Escreva o novo nome:");
+                pessoa.Nome = Console.ReadLine();
+                Console.WriteLine("Sobrenome Atual: " + pessoa.Sobrenome + ", Escreva o novo SobreNome:");
+                pessoa.Sobrenome = Console.ReadLine();
+                Console.WriteLine("Nome Atual: " + pessoa.DataDeNascimento + ", Escreva o novo nome:");
+                pessoa.DataDeNascimento = DateTime.Parse(Console.ReadLine());
+                agenda.Atualizar(pessoa);
+            }
+
+            Console.WriteLine("Nome não encontrado");
+        }
+
         public static void ObterPessoas(Agenda agenda)
         {
             List<Pessoa> pessoas = agenda.ObterTodasAsPessoas();
@@ -94,7 +147,7 @@ namespace AgendaDeAniversarios
             }
         }
 
-        public static void BuscarPessoaPorNome(Agenda agenda)
+        public static Pessoa BuscarPessoaPorNome(Agenda agenda)
         {
 
             Console.WriteLine("Digite o  nome da pessoa");
@@ -109,7 +162,9 @@ namespace AgendaDeAniversarios
             Console.WriteLine(pessoa.Nome);
             Console.WriteLine(pessoa.Sobrenome);
             Console.WriteLine(pessoa.DataDeNascimento);
-            Console.WriteLine();
+            Console.WriteLine("Faltam, " + pessoa.DiasParaOAniversario + " dias para o aniversario";);
+
+            return pessoa;
         }
     }
 }

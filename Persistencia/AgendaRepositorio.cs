@@ -44,7 +44,7 @@ namespace Persistencia
             }
             arquivo.Close();
 
-            return agenda
+            return agenda;
         }
     }
 }

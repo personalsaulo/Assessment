@@ -71,7 +71,12 @@ namespace Modelo
             for (int i = 0; i < agenda.Count; i++)
             {
                 if (agenda[i].Nome.Contains(nome))
+                {
+                    agenda[i].DiasParaOAniversario =  CalculaQuantosDiasFaltamParaAniversario(agenda[i].DataDeNascimento);
                     return agenda[i];
+                    
+                }
+                    
             }
             return null;
         }
@@ -86,6 +91,36 @@ namespace Modelo
             return null;
         }
 
+        public Pessoa VerificaSeTemAniversarioHoje()
+        {
+            for (int i = 0; i < agenda.Count; i++)
+            {
+                if (agenda[i].DataDeNascimento.Day == DateTime.Now.Day && agenda[i].DataDeNascimento.Month == DateTime.Now.Month)
+                    return agenda[i];
+            }
+            return null;
+        }
+
+        public int CalculaQuantosDiasFaltamParaAniversario(DateTime dataDeAniversario)
+        {
+            int dias = 0;
+            int diferencaDeAnos = DateTime.Now.Year - dataDeAniversario.Year;
+
+            bool maiorqMesAtual = DateTime.Now.Month < dataDeAniversario.Month;
+            int diaDoAnoDoAniversario = dataDeAniversario.AddYears(diferencaDeAnos).DayOfYear;
+            int diadoAnoAtual = DateTime.Now.DayOfYear;
+
+
+            if (maiorqMesAtual)
+                dias = diaDoAnoDoAniversario - diadoAnoAtual;
+            else
+            {
+                int anoQueVem = diferencaDeAnos + 1;
+                TimeSpan diaAniversarioProximoAno = dataDeAniversario.AddYears(anoQueVem).Subtract(DateTime.Now);
+                dias = diaAniversarioProximoAno.Days;
+            }
+            return dias;
+        }
 
         //public List<Pessoa> BuscaPessoasPorNome(string nome)
         //{
@@ -100,4 +135,4 @@ namespace Modelo
 
     }
 
-}
+    }
