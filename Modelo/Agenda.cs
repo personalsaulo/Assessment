@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Modelo.Interfaces;
 
 namespace Modelo
 {
-    public class Agenda
+    public class Agenda : IInserir ,IDelete, IBuscar, IAtualizar
     {
         private List<Pessoa> agenda = new List<Pessoa>();
 
@@ -20,13 +21,12 @@ namespace Modelo
             return agenda.Count();
         }
 
-
         public void Adicionar(Pessoa pessoa)
         {
             agenda.Add(pessoa);
         }
 
-        public void Atualizar(Pessoa pessoaComAlteracao)
+         public void Atualizar(Pessoa pessoaComAlteracao)
         {
             for (int i = 0; i < agenda.Count; i++)
             {
@@ -81,15 +81,15 @@ namespace Modelo
             return null;
         }
 
-        public Pessoa BuscarPessoaPorData(DateTime dataNascimento)
-        {
-            for (int i = 0; i < agenda.Count; i++)
-            {
-                if (agenda[i].DataDeNascimento == dataNascimento)
-                    return agenda[i];
-            }
-            return null;
-        }
+        //public Pessoa BuscarPessoaPorData(DateTime dataNascimento)
+        //{
+        //    for (int i = 0; i < agenda.Count; i++)
+        //    {
+        //        if (agenda[i].DataDeNascimento == dataNascimento)
+        //            return agenda[i];
+        //    }
+        //    return null;
+        //}
 
         public Pessoa VerificaSeTemAniversarioHoje()
         {
@@ -121,6 +121,8 @@ namespace Modelo
             }
             return dias;
         }
+
+
 
         //public List<Pessoa> BuscaPessoasPorNome(string nome)
         //{

@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agenda.cs" />
+    <Compile Include="Interfaces\IAtualizar.cs" />
+    <Compile Include="Interfaces\IBuscar.cs" />
+    <Compile Include="Interfaces\IDelete.cs" />
+    <Compile Include="Interfaces\IInserir.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

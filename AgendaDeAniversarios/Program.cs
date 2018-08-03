@@ -162,7 +162,7 @@ namespace AgendaDeAniversarios
             Console.WriteLine(pessoa.Nome);
             Console.WriteLine(pessoa.Sobrenome);
             Console.WriteLine(pessoa.DataDeNascimento);
-            Console.WriteLine("Faltam, " + pessoa.DiasParaOAniversario + " dias para o aniversario";);
+            Console.WriteLine("Faltam, " + pessoa.DiasParaOAniversario + " dias para o aniversario");
 
             return pessoa;
         }
